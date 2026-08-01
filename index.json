@@ -1,8 +1,8 @@
 {
   "name": "SN-Store",
   "author": "S-Number",
-  "url": "https://S-Number.github.io/SN-Store-Apps/index.json",
-  "id": "com.s-number.sn-store-apps",
+  "url": "https://S-Number.github.io/SN-Store-Repo/index.json",
+  "id": "com.s-number.sn-store-Repo",
   "packages": {
     "com.sn-store.autosave": {
       "versions": {
