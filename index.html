@@ -221,7 +221,7 @@
       transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
     }
 
     .package-title-link:hover {
@@ -341,20 +341,30 @@
           const latestVersionKey = versions[versions.length - 1];
           const latestInfo = pkgData.versions[latestVersionKey];
 
-          // 🔗 リポジトリURLの抽出ロジック（repoプロパティ優先、なければurlからGitHubリポジトリを生成）
-          let targetRepoUrl = latestInfo.repo;
-          if (!targetRepoUrl && latestInfo.url) {
+          // 🔗 強化版リポジトリURL判定ロジック
+          let targetRepoUrl = null;
+
+          if (latestInfo.repo) {
+            targetRepoUrl = latestInfo.repo;
+          } else if (pkgData.repo) {
+            targetRepoUrl = pkgData.repo;
+          } else if (latestInfo.url) {
             const match = latestInfo.url.match(/(https:\/\/github\.com\/[^/]+\/[^/]+)/);
             if (match) {
-              targetRepoUrl = match[1];
+              targetRepoUrl = match[1].replace(/\.git$/, '');
+            } else if (latestInfo.url.startsWith('http')) {
+              targetRepoUrl = latestInfo.url;
             }
           }
 
-          // タイトル用HTML構築
+          // それでも取れなかった場合のフォールバック（パッケージ名からGitHubリポジトリを自動推測）
+          if (!targetRepoUrl) {
+            const repoName = pkgName.split('.').pop();
+            targetRepoUrl = `https://github.com/S-Number/${repoName}`;
+          }
+
           const displayName = latestInfo.displayName || pkgName;
-          const titleHtml = targetRepoUrl 
-            ? `<a class="package-title-link" href="${targetRepoUrl}" target="_blank" rel="noopener noreferrer">${displayName} 🔗</a>`
-            : `<span class="package-title-link" style="cursor:default">${displayName}</span>`;
+          const titleHtml = `<a class="package-title-link" href="${targetRepoUrl}" target="_blank" rel="noopener noreferrer">${displayName} 🔗</a>`;
 
           const card = document.createElement('div');
           card.className = 'package-card';
