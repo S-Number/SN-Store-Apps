@@ -21,6 +21,17 @@
           "zipUrl": "https://github.com/S-Number/SN-AutoSave/releases/download/v1.3.3/SN.AutoSave.v1.3.3.zip"
         }
       }
+    },
+    "com.sn-store.multi-avatar-uploader": {
+      "versions": {
+        "1.0.2": {
+          "name": "com.sn-store.multi-avatar-uploader",
+          "displayName": "SN Multi Avatar Uploader",
+          "version": "1.0.2",
+          "description": "VRChat用アバターを連続で自動アップロードするためのUnity拡張ツール。",
+          "zipUrl": "https://github.com/S-Number/SN-Multi-Avatar-Uploader/releases/download/v1.0.2/SN.Multi.Avatar.Uploader.v1.0.2.zip"
+        }
+      }
     }
   }
 }
