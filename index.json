@@ -3,17 +3,5 @@
   "author": "S-Number",
   "url": "https://S-Number.github.io/SN-Store-Apps/index.json",
   "id": "com.s-number.sn-store-apps",
-  "packages": {
-    "com.sn-store.autosave": {
-      "versions": {
-        "1.3.1": {
-          "name": "com.sn-store.autosave",
-          "displayName": "SN-Store AutoSave",
-          "version": "1.3.1",
-          "description": "An editor extension that autosaves open scenes when the user is idle.",
-          "zipUrl": "https://github.com/S-Number/SN-AutoSave/releases/download/v1.3.1/SN.AutoSave.v1.3.1.zip"
-        }
-      }
-    }
-  }
+  "packages": {}
 }
