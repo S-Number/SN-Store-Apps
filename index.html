@@ -36,6 +36,7 @@
       box-sizing: border-box;
     }
 
+    /* 上下マージン auto による確実な上下中央寄せ */
     .container {
       max-width: 680px;
       width: 100%;
@@ -213,20 +214,11 @@
       align-items: center;
     }
 
-    .package-title-link {
+    .package-title {
       font-size: 18px;
       font-weight: bold;
       color: var(--main-purple-light);
-      text-decoration: none;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .package-title-link:hover {
-      color: #ffffff;
-      text-decoration: underline;
+      margin: 0;
     }
 
     .package-version {
@@ -341,36 +333,11 @@
           const latestVersionKey = versions[versions.length - 1];
           const latestInfo = pkgData.versions[latestVersionKey];
 
-          // 🔗 強化版リポジトリURL判定ロジック
-          let targetRepoUrl = null;
-
-          if (latestInfo.repo) {
-            targetRepoUrl = latestInfo.repo;
-          } else if (pkgData.repo) {
-            targetRepoUrl = pkgData.repo;
-          } else if (latestInfo.url) {
-            const match = latestInfo.url.match(/(https:\/\/github\.com\/[^/]+\/[^/]+)/);
-            if (match) {
-              targetRepoUrl = match[1].replace(/\.git$/, '');
-            } else if (latestInfo.url.startsWith('http')) {
-              targetRepoUrl = latestInfo.url;
-            }
-          }
-
-          // それでも取れなかった場合のフォールバック（パッケージ名からGitHubリポジトリを自動推測）
-          if (!targetRepoUrl) {
-            const repoName = pkgName.split('.').pop();
-            targetRepoUrl = `https://github.com/S-Number/${repoName}`;
-          }
-
-          const displayName = latestInfo.displayName || pkgName;
-          const titleHtml = `<a class="package-title-link" href="${targetRepoUrl}" target="_blank" rel="noopener noreferrer">${displayName} 🔗</a>`;
-
           const card = document.createElement('div');
           card.className = 'package-card';
           card.innerHTML = `
             <div class="package-header">
-              <h2 style="margin:0">${titleHtml}</h2>
+              <h2 class="package-title">${latestInfo.displayName || pkgName}</h2>
               <span class="package-version">v${latestInfo.version}</span>
             </div>
             <p class="package-desc">${latestInfo.description || '説明なし'}</p>
