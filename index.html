@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- 💡 決定打：GitHubでの「クリック権」を引き継いで開いた瞬間にVCCポップアップを即起動させる -->
+  <meta http-equiv="refresh" content="0;url=vcc://vpm/addRepo?url=https://S-Number.github.io/SN-Store-Repo/index.json">
+  
   <title>SN Store VPM Repository</title>
   <style>
     body {
@@ -45,21 +49,13 @@
       margin-top: 16px;
     }
   </style>
-
-  <!-- 💡 ページが開いた瞬間に VCC 起動ダイアログを自動で呼び出す -->
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const vccUrl = "vcc://vpm/addRepo?url=https://S-Number.github.io/SN-Store-Repo/index.json";
-      window.location.href = vccUrl;
-    });
-  </script>
 </head>
 <body>
   <div class="card">
     <h2>SN Store VPM Repository</h2>
     <p>VRChat Companion App (VCC) の追加画面を呼び出しています...</p>
     <a class="btn" href="vcc://vpm/addRepo?url=https://S-Number.github.io/SN-Store-Repo/index.json">画面が開かない場合はこちら</a>
-    <p class="subtext">※ブラウザの許可ダイアログが表示されたら「開く」を押してください。</p>
+    <p class="subtext">※「VRChat Companion App を開きますか？」と出たら「開く」を押してください。</p>
   </div>
 </body>
 </html>
