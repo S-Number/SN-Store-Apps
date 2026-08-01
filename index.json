@@ -11,7 +11,7 @@
           "displayName": "SN AutoSave",
           "version": "1.3.3",
           "description": "Unityでの不意のクラッシュやPCトラブルから大切な作業データを守るための、オートセーブツール。",
-          "zipUrl": "https://github.com/S-Number/SN-AutoSave/releases/download/v1.3.3/SN.AutoSave.v1.3.3.zip"
+          "Url": "https://github.com/S-Number/SN-AutoSave/releases/download/v1.3.3/SN.AutoSave.v1.3.3.zip"
         }
       }
     },
@@ -22,7 +22,7 @@
           "displayName": "SN Multi Avatar Uploader",
           "version": "1.0.2",
           "description": "VRChat用アバターを連続で自動アップロードするためのUnity拡張ツール。",
-          "zipUrl": "https://github.com/S-Number/SN-Multi-Avatar-Uploader/releases/download/v1.0.2/SN.Multi.Avatar.Uploader.v1.0.2.zip"
+          "Url": "https://github.com/S-Number/SN-Multi-Avatar-Uploader/releases/download/v1.0.2/SN.Multi.Avatar.Uploader.v1.0.2.zip"
         }
       }
     },
@@ -33,7 +33,7 @@
           "displayName": "SN Object Detail Exporter",
           "version": "1.0.2",
           "description": "VRChat向けのアバターや小物・衣装などのパフォーマンス情報を,ワンクリックで一括取得＆クリップボードにコピーできるUnity拡張ツール。",
-          "zipUrl": "https://github.com/S-Number/SN-Object-Detail-Exporter/releases/download/v1.0.2/SN.Object.Detail.Exporter.v1.0.2.zip"
+          "Url": "https://github.com/S-Number/SN-Object-Detail-Exporter/releases/download/v1.0.2/SN.Object.Detail.Exporter.v1.0.2.zip"
         }
       }
     }
