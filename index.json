@@ -1,13 +1,14 @@
 {
   "name": "SN-Store",
-  "author": "S-Number",
   "url": "https://S-Number.github.io/SN-Store-Apps/index.json",
-  "id": "com.S-Number.SN-Store-Apps",
   "packages": {
-          "name": "com.sn-store.autosave",
+    "com.sn-store.autosave": {
+      "versions": {
+        "1.3.0": {
           "displayName": "SN AutoSave",
-          "version": "1.3.0",
-          "description": "Unityでの不意のクラッシュやPCトラブルから大切な作業データを守るための、オートセーブツールです。",
-          "zipUrl": "https://github.com/S-Number/SN-AutoSave/releases/download/v1.3.0/SN.AutoSave.v1.3.0.zip",
-}
+          "zipUrl": "https://github.com/S-Number/SN-AutoSave/releases/download/v1.3.0/SN.AutoSave.v1.3.0.zip"
+        }
+      }
+    },
+  }
 }
