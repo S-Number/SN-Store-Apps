@@ -29,15 +29,18 @@
       margin: 0;
       padding: 40px 20px;
       display: flex;
-      justify-content: center;
-      align-items: center;    /* 上下中央揃え */
-      min-height: 100vh;      /* 画面高さを100%確保 */
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
       box-sizing: border-box;
     }
 
+    /* 上下マージン auto による確実な上下中央寄せ */
     .container {
       max-width: 680px;
       width: 100%;
+      margin-top: auto;
+      margin-bottom: auto;
     }
 
     /* ヘッダーエリア */
