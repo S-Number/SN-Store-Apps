@@ -213,11 +213,20 @@
       align-items: center;
     }
 
-    .package-title {
+    .package-title-link {
       font-size: 18px;
       font-weight: bold;
       color: var(--main-purple-light);
-      margin: 0;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .package-title-link:hover {
+      color: #ffffff;
+      text-decoration: underline;
     }
 
     .package-version {
@@ -332,11 +341,26 @@
           const latestVersionKey = versions[versions.length - 1];
           const latestInfo = pkgData.versions[latestVersionKey];
 
+          // 🔗 リポジトリURLの抽出ロジック（repoプロパティ優先、なければurlからGitHubリポジトリを生成）
+          let targetRepoUrl = latestInfo.repo;
+          if (!targetRepoUrl && latestInfo.url) {
+            const match = latestInfo.url.match(/(https:\/\/github\.com\/[^/]+\/[^/]+)/);
+            if (match) {
+              targetRepoUrl = match[1];
+            }
+          }
+
+          // タイトル用HTML構築
+          const displayName = latestInfo.displayName || pkgName;
+          const titleHtml = targetRepoUrl 
+            ? `<a class="package-title-link" href="${targetRepoUrl}" target="_blank" rel="noopener noreferrer">${displayName} 🔗</a>`
+            : `<span class="package-title-link" style="cursor:default">${displayName}</span>`;
+
           const card = document.createElement('div');
           card.className = 'package-card';
           card.innerHTML = `
             <div class="package-header">
-              <h2 class="package-title">${latestInfo.displayName || pkgName}</h2>
+              <h2 style="margin:0">${titleHtml}</h2>
               <span class="package-version">v${latestInfo.version}</span>
             </div>
             <p class="package-desc">${latestInfo.description || '説明なし'}</p>
