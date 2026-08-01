@@ -16,10 +16,11 @@
       --text-main: #c9d1d9;
       --text-sub: #8b949e;
       
-      /* メインカラー定義 */
+      /* メインカラー定義 (#A970FF) */
       --main-purple: #A970FF;
+      --main-purple-dark: #823be8;
       --main-purple-hover: #9353FF;
-      --main-purple-light: #C29AFF;
+      --main-purple-light: #D2B0FF;
     }
 
     body {
@@ -35,7 +36,6 @@
       box-sizing: border-box;
     }
 
-    /* 上下マージン auto による確実な上下中央寄せ */
     .container {
       max-width: 680px;
       width: 100%;
@@ -47,53 +47,130 @@
     .header {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 32px 24px;
+      border-radius: 20px;
+      padding: 36px 28px;
       text-align: center;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.4);
       margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ヘッダー上部のほのかな発光アクセント */
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 120px;
+      background: var(--main-purple);
+      filter: blur(60px);
+      opacity: 0.25;
+      pointer-events: none;
     }
 
     .header h1 {
-      margin: 0 0 8px 0;
-      font-size: 24px;
+      margin: 0 0 10px 0;
+      font-size: 26px;
       color: #f0f6fc;
+      letter-spacing: -0.5px;
     }
 
     .header p {
-      margin: 0 0 24px 0;
+      margin: 0 0 28px 0;
       color: var(--text-sub);
       font-size: 14px;
       line-height: 1.5;
     }
 
-    /* メインボタン（#A970FF） */
+    /* ボタンエリア（メインボタン ＋ コピーボタン） */
+    .btn-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* 💎 プレミアム VCC 追加ボタン */
     .vcc-btn {
+      position: relative;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      background-color: var(--main-purple);
+      gap: 10px;
+      background: linear-gradient(135deg, var(--main-purple) 0%, var(--main-purple-dark) 100%);
       color: #ffffff;
-      padding: 14px 28px;
-      border-radius: 8px;
+      padding: 15px 32px;
+      border-radius: 12px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 700;
       font-size: 16px;
-      box-shadow: 0 4px 16px rgba(169, 112, 255, 0.35);
-      transition: all 0.2s ease;
+      box-shadow: 0 4px 20px rgba(169, 112, 255, 0.4);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+
+    /* ホバー時の光彩（Shine）アニメーション */
+    .vcc-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+      transform: rotate(25deg);
+      transition: all 0.6s ease;
     }
 
     .vcc-btn:hover {
-      background-color: var(--main-purple-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(169, 112, 255, 0.5);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 28px rgba(169, 112, 255, 0.6);
+      background: linear-gradient(135deg, var(--main-purple-hover) 0%, var(--main-purple) 100%);
+    }
+
+    .vcc-btn:hover::after {
+      left: 130%;
+    }
+
+    .vcc-btn:active {
+      transform: translateY(-1px) scale(0.99);
+    }
+
+    /* 📋 URLコピー サブボタン */
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: #21262d;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 15px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background: #30363d;
+      border-color: #8b949e;
+      color: #ffffff;
+    }
+
+    .copy-btn:active {
+      transform: scale(0.97);
     }
 
     .subtext {
       font-size: 12px;
       color: #6e7681;
-      margin-top: 16px;
+      margin-top: 18px;
       margin-bottom: 0;
     }
 
@@ -116,7 +193,7 @@
     .package-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 20px 24px;
       display: flex;
       flex-direction: column;
@@ -126,7 +203,8 @@
 
     .package-card:hover {
       border-color: var(--main-purple);
-      box-shadow: 0 4px 12px rgba(169, 112, 255, 0.15);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(169, 112, 255, 0.12);
     }
 
     .package-header {
@@ -147,7 +225,7 @@
       border: 1px solid var(--border-color);
       color: var(--text-sub);
       font-size: 12px;
-      padding: 2px 8px;
+      padding: 3px 10px;
       border-radius: 12px;
       font-family: monospace;
     }
@@ -180,10 +258,27 @@
       <h1>SN Store Repository</h1>
       <p>VRChat Companion App (VCC) にリポジトリを追加呼び出し中...</p>
       
-      <a class="vcc-btn" href="vcc://vpm/addRepo?url=https://S-Number.github.io/SN-Store-Repo/index.json">
-        ➕ VCCにリポジトリを追加
-      </a>
-      <p class="subtext">※自動で開かない場合は、上のボタンを押してください。</p>
+      <div class="btn-group">
+        <!-- VCC起動ボタン -->
+        <a class="vcc-btn" href="vcc://vpm/addRepo?url=https://S-Number.github.io/SN-Store-Repo/index.json">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Add to VCC
+        </a>
+
+        <!-- URLコピーボタン -->
+        <button class="copy-btn" onclick="copyRepoUrl()" id="copyBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span id="copyBtnText">URLをコピー</span>
+        </button>
+      </div>
+
+      <p class="subtext">※自動で開かない場合は「Add to VCC」を押すか、URLをコピーしてVCCに手動で登録してください。</p>
     </div>
 
     <!-- 登録パッケージ一覧 -->
@@ -197,6 +292,20 @@
   </div>
 
   <script>
+    const REPO_URL = "https://S-Number.github.io/SN-Store-Repo/index.json";
+
+    // URLコピー機能
+    function copyRepoUrl() {
+      navigator.clipboard.writeText(REPO_URL).then(() => {
+        const textEl = document.getElementById('copyBtnText');
+        const origText = textEl.innerText;
+        textEl.innerText = "コピー完了！";
+        setTimeout(() => {
+          textEl.innerText = origText;
+        }, 2000);
+      });
+    }
+
     // index.json から自動的にパッケージ情報を取得して描画する
     async function loadPackages() {
       const container = document.getElementById('package-list');
